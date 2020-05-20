@@ -4,6 +4,6 @@ Feature: Generate company emails for an employee
 
   Scenario: Generating a company email for a new employee
     Given "Jack" has joined the company
-    And the company email format is "username@inviqa.com"
+    And the company email format is "username@mycompany.com"
     When the company email address is generated
-    Then it should equal "jack@inviqa.com"
+    Then it should equal "jack@mycompany.com"

@@ -3,3 +3,6 @@ default:
     application:
       contexts:
         - EmailGeneratorContext
+    end_to_end:
+      contexts:
+        - EmailGeneratorEndToEndContext

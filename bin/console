@@ -1,3 +1,4 @@
+#!/bin/env php
 <?php
 
 use BehatDemo\Console\Command\GenerateEmailAddressCommand;
@@ -9,7 +10,13 @@ require 'vendor/autoload.php';
 
 $application = new Application('Behat demo', '1.0.0');
 
-$emailGeneratorConfig = new EmailGeneratorConfig('username@inviqa.com');
+$config = json_decode(file_get_contents(__DIR__ . '/../data/email_generator_config.json'), true);
+
+if (empty($config['email_format'])) {
+    throw new RuntimeException('Email format is not defined!');
+}
+
+$emailGeneratorConfig = new EmailGeneratorConfig($config['email_format']);
 $emailGenerator = new EmailGenerator($emailGeneratorConfig);
 
 $application->add(new GenerateEmailAddressCommand($emailGenerator));

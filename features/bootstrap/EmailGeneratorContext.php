@@ -37,7 +37,6 @@ class EmailGeneratorContext implements Context
     public function theCompanyEmailAddressIsGenerated()
     {
         $this->generatedEmail = $this->emailGenerator->generate($this->employeeName);
-//        $this->generatedEmail = str_replace('username', strtolower($this->employeeName), $this->emailFormat);
     }
 
     /**
@@ -45,6 +44,8 @@ class EmailGeneratorContext implements Context
      */
     public function itShouldEqual(string $expected)
     {
-        assert($this->generatedEmail === $expected);
+        if ($this->generatedEmail !== $expected) {
+            throw new Exception('Email address doesn\'t match expected email address');
+        }
     }
 }
