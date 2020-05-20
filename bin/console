@@ -16,8 +16,7 @@ if (empty($config['email_format'])) {
     throw new RuntimeException('Email format is not defined!');
 }
 
-$emailGeneratorConfig = new EmailGeneratorConfig($config['email_format']);
-$emailGenerator = new EmailGenerator($emailGeneratorConfig);
+$emailGenerator = new EmailGenerator($config['email_format']);
 
 $application->add(new GenerateEmailAddressCommand($emailGenerator));
 

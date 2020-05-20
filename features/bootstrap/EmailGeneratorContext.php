@@ -1,7 +1,6 @@
 <?php
 
 use Behat\Behat\Context\Context;
-use BehatDemo\Generator\Config\EmailGeneratorConfig;
 use BehatDemo\Generator\EmailGenerator;
 
 class EmailGeneratorContext implements Context
@@ -28,7 +27,7 @@ class EmailGeneratorContext implements Context
      */
     public function theCompanyEmailFormatIs(string $format)
     {
-        $this->emailGenerator = new EmailGenerator(new EmailGeneratorConfig($format));
+        $this->emailGenerator = new EmailGenerator($format);
     }
 
     /**
